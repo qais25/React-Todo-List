@@ -7,8 +7,35 @@ import { Divider } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Todo from "./Todo";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { v4 as uuidv4 } from "uuid";
 
+const todos = [
+  {
+    id: uuidv4(),
+    title: "قراءة كتاب",
+    details: "Any thing",
+    isCompleted: false,
+  },
+  {
+    id: uuidv4(),
+    title: "قراءة كتاب",
+    details: "Any thing",
+    isCompleted: false,
+  },
+  {
+    id: uuidv4(),
+    title: "قراءة كتاب",
+    details: "Any thing",
+    isCompleted: false,
+  },
+];
 export default function TodoList() {
+  const todosJsx = todos.map((t) => {
+    return <Todo key={t.id} title={t.title} details={t.details} />;
+  });
   return (
     <Container maxWidth="sm">
       <Card sx={{ minWidth: 275 }}>
@@ -16,7 +43,7 @@ export default function TodoList() {
           <Typography
             variant="h2"
             gutterBottom
-            sx={{ color: "text.secondary" }}
+            sx={{ color: "text.secondary", fontWeight: "bold" }}
           >
             مهامي
           </Typography>
@@ -35,8 +62,40 @@ export default function TodoList() {
           </ToggleButtonGroup>
           {/* End Filter Buttons */}
 
-          {/* All Todos */}
-          <Todo />
+          {/* Start All Todos */}
+          {todosJsx}
+          {/* End All Todos */}
+
+          <Grid container spacing={2} style={{ marginTop: "20px" }}>
+            <Grid
+              size={8}
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined-basic"
+                label="عنوان المهمة"
+                variant="outlined"
+              />
+            </Grid>
+            {/* Action Buttons */}
+            <Grid
+              size={4}
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              <Button
+                style={{ width: "100%", height: "100%" }}
+                variant="contained"
+              >
+                اضافة
+              </Button>
+            </Grid>
+            {/* Action Buttons */}
+          </Grid>
         </CardContent>
       </Card>
     </Container>

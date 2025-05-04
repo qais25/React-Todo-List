@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
-const Todo = () => {
+const Todo = ({ title, details }) => {
   return (
     <>
       <Card
@@ -24,10 +24,10 @@ const Todo = () => {
           <Grid container spacing={2}>
             <Grid size={8}>
               <Typography variant="h5" sx={{ textAlign: "right" }}>
-                المهمة الاولى
+                {title}
               </Typography>
               <Typography variant="h6" sx={{ textAlign: "right" }}>
-                التفاصيل الخاصة بالمهمة الاولى
+                {details}
               </Typography>
             </Grid>
             {/* Action Buttons */}
